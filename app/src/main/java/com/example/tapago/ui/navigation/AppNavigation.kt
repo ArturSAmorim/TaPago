@@ -1,4 +1,4 @@
-package com.example.tapago.ui.screen
+package com.example.tapago.ui.navigation
 
 import androidx.compose.runtime.Composable
 import androidx.navigation.NavType
@@ -6,6 +6,8 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import androidx.navigation.navArgument
+import com.example.tapago.ui.screen.ItemTreinoScreen
+import com.example.tapago.ui.screen.ListaTreinoScreen
 
 @Composable
 fun ConfiguracaoNav(){
@@ -28,7 +30,7 @@ fun ConfiguracaoNav(){
             backStackEntry ->
             val id=backStackEntry.arguments?.getInt("treinoId")?:0
 
-            ItemTreinoScreen(treinoId = id, onBackClick = {navController.popBackStack()})
+            ItemTreinoScreen(treinoId = id, onBackClick = { navController.popBackStack() })
 
         }
 
