@@ -12,6 +12,7 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.items
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.filled.ArrowBack
 import androidx.compose.material.icons.filled.CheckCircle
@@ -22,28 +23,30 @@ import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.collectAsState
+import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.draw.blur
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontWeight
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewmodel.compose.viewModel
 import com.example.tapago.data.model.Exercicio
+import com.example.tapago.data.model.ExercicoViewModel
 import com.example.tapago.data.model.ListTreinotest.ListaDeTreino1
 
 @Composable
 fun ItemTreinoScreen(
     treinoId:Int,
-    onBackClick:()-> Unit
+    onBackClick:()-> Unit,
+    viewModel: ExercicoViewModel = viewModel(),
 ) {
 
     val treino = ListaDeTreino1.find { it.id == treinoId }
+    val exercicios by viewModel.exercicios.collectAsState()
     Column(
         modifier = Modifier
             .fillMaxSize()
@@ -84,13 +87,13 @@ fun ItemTreinoScreen(
         LazyColumn(
             verticalArrangement = Arrangement.spacedBy(12.dp)
         ) {
-            treino?.exercicios?.forEach { exercicio ->
-                item {
-                    CardTExercicio(exercicio = exercicio)
-                }
+            items(treino?.exercicios ?: emptyList()) { exercicio ->
+                CardTExercicio(exercicio = exercicio,
+                    onIniciarClick = {viewModel.adicionarExercicio(exercicio)}
+                )
+
+
             }
-
-
         }
     }
 }
@@ -191,7 +194,6 @@ fun CardTExercicio(
                             tint = if (exercicio.concluido) Color(0xFF2E7D32) else MaterialTheme.colorScheme.outline,
                             modifier = Modifier
                                 .size(28.dp)
-                                .clickable { onConcluirClick() }
 
                         )
                     }
