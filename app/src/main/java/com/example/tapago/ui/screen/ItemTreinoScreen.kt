@@ -35,7 +35,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.lifecycle.viewmodel.compose.viewModel
 import com.example.tapago.data.model.Exercicio
-import com.example.tapago.data.model.ExercicoViewModel
+import com.example.tapago.ui.viewmodels.ExercicoViewModel
 import com.example.tapago.data.model.ListTreinotest.ListaDeTreino1
 
 @Composable
