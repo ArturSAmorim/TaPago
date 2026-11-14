@@ -56,25 +56,25 @@ fun ConfiguracaoNav(){
         innerPadding ->
         NavHost(
             navController= navController,
-            startDestination = "HomeScreen",
+            startDestination = Rotas.HOME,
             modifier = Modifier.padding(innerPadding)
         ){
-            composable("HomeScreen") {
+            composable(Rotas.HOME) {
                 HomeScreen()
             }
-            composable("TreinoScreen") {
+            composable(Rotas.TREINO) {
                 ListaTreinoScreen(onTreinoClick = { treino ->
-                    navController.navigate("ItemTreinoScreen/${treino.id}")
+                    navController.navigate(Rotas.itemTreino(treino.id))
                 })
             }
             composable(
-                route = "ItemTreinoScreen/{treinoId}",
+                route = Rotas.ITEM_TREINO,
                 arguments = listOf(navArgument("treinoId") { type = NavType.IntType })
             ) { backStackEntry ->
                 val id = backStackEntry.arguments?.getInt("treinoId") ?: 0
                 ItemTreinoScreen(treinoId = id, onBackClick = { navController.popBackStack() })
             }
-            composable("PerfilScreen") {
+            composable(Rotas.PERFIL) {
                 PerfilScreen()
             }
         }

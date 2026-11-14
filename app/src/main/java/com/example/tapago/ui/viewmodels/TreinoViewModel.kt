@@ -23,4 +23,5 @@ class TreinoViewModel: ViewModel() {
     fun removerExercicio(treino: Treino) {
         _treinos.value -= treino
     }
+
 }

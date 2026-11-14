@@ -13,4 +13,8 @@ data class Treino(
 ){
     val tempo: Int
         get()= exercicios.sumOf { it.series*(it.tempoExecucao + it.tempoDescanso) }
+    val treinoConcluido: Boolean
+        get()= exercicios.all {it.concluido}
+
+
 }
