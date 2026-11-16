@@ -26,17 +26,21 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import com.example.tapago.data.model.ListTreinotest.ListaDeTreino1
 import com.example.tapago.data.model.Treino
 import androidx.compose.material3.Icon
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.KeyboardArrowRight
-
+import androidx.compose.runtime.collectAsState
+import androidx.compose.runtime.getValue
+import androidx.lifecycle.viewmodel.compose.viewModel
+import com.example.tapago.ui.viewmodels.ExercicoViewModel
+import com.example.tapago.ui.viewmodels.TreinoViewModel
 
 
 @Composable
-fun ListaTreinoScreen(onTreinoClick: (Treino) -> Unit) {
-    val treinos= ListaDeTreino1
+fun ListaTreinoScreen(onTreinoClick: (Treino) -> Unit,
+                      viewModels: TreinoViewModel= viewModel()) {
+    val treinos by viewModels.treinos.collectAsState()
 
 
     LazyColumn(

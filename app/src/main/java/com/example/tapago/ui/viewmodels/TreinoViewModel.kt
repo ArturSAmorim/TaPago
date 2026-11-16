@@ -14,7 +14,7 @@ class TreinoViewModel: ViewModel() {
     private val _treinos = MutableStateFlow<List<Treino>>(emptyList())
     val treinos = _treinos.asStateFlow()
     init{
-        _treinos.value = ListTreinotest.ListaDeTreino1
+        _treinos.value = ListTreinotest.ListaDeTreino1.take(1)
     }
 
     fun adicionarTreino(treino: Treino){
