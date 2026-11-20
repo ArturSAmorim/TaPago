@@ -17,21 +17,21 @@ data class BottomNavItem(
 val bottomNavItem= listOf(
     BottomNavItem(
         label = "Home",
-        route = "HomeScreen",
+        route = Rotas.HOME,
         icon = Icons.Filled.Home
     ),BottomNavItem(
         label = "Começar",
-        route = "ItemTreinoScreen/0",
+        route = Rotas.START,
         icon = Icons.Filled.PlayArrow
     ),
     BottomNavItem(
         label = "Treinos",
-        route = "TreinoScreen",
+        route = Rotas.TREINO,
         icon = Icons.Filled.FitnessCenter
     ),
     BottomNavItem(
        label = "Perfil",
-        route = "PerfilScreen",
+        route = Rotas.PERFIL,
         icon = Icons.Filled.Person
     ),
 )

@@ -27,9 +27,10 @@ fun ConfiguracaoNav(){
 
     val navBackStackEntry by navController.currentBackStackEntryAsState()
     val currentRoute = navBackStackEntry?.destination?.route
+    val mostrarBarra = bottomNavItem.any { it.route == currentRoute }
     Scaffold(
         bottomBar = {
-            if (currentRoute != "ItemTreinoScreen") {
+            if (mostrarBarra) {
                 NavigationBar {
                     bottomNavItem.forEach { item ->
                         NavigationBarItem(

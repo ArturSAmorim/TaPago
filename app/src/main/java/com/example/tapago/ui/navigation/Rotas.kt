@@ -8,5 +8,7 @@ object Rotas {
 
     const val ITEM_TREINO = "ItemTreinoScreen/{treinoId}"
 
+    const val START = "StartScreen"
+
     fun itemTreino(id: Int) = "ItemTreinoScreen/$id"
 }
